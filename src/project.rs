@@ -36,34 +36,45 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-
+use near_contract_standards::fungible_token::metadata::{
+    FungibleTokenMetadata, FT_METADATA_SPEC,
+};
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::{env, near_bindgen};
-mod NEP141;
-
-near_sdk::setup_alloc!();
+use near_sdk::{env, AccountId};
+use near_sdk::json_types::U128;
+use super::{nep141};
 
 
 // add the following attributes to prepare your code for serialization and invocation on the blockchain
 // More built-in Rust attributes here: https://doc.rust-lang.org/reference/attributes.html#built-in-attributes-index
-#[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
 pub struct Project {
-    shares: NEP141::NEP141,
+    shares: nep141::NEP141,
 }
 
-#[near_bindgen]
 impl Project {
     /// Creates a new project in the Futureland ecosystem
-    #[init]
     pub fn new(
         owner_id: AccountId,
         total_shares: U128,
-        share_metadata: FungibleTokenMetadata,
+        mut project_name: String,
+        project_symbol: String,
     ) -> Self {
         assert!(!env::state_exists(), "Already initialized");
-        let mut this = Self {
-            shares: NEP141::new(owner_id, total_shares, share_metadata),
+        project_name.push_str(&std::string::String::from(" share"));
+        let this = Self {
+            shares: nep141::NEP141::new(owner_id,
+                                        total_shares,
+                                        FungibleTokenMetadata {
+                                            spec: FT_METADATA_SPEC.to_string(),
+                                            name: project_name,
+                                            symbol: project_symbol,
+                                            icon: None,
+                                            reference: None,
+                                            reference_hash: None,
+                                            decimals: 24,
+                                        }
+                                    )
         };
 
         // TODO: transfer some shares to Futureland

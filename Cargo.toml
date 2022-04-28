@@ -1,8 +1,28 @@
 [package]
 name = "futureland-core"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
+near-sdk = "4.0.0-pre.7"
+near-contract-standards = "4.0.0-pre.7"
+#near-sdk = "4.0.0-pre.6"
+#near-sdk-sim = "4.0.0-pre.6"
+
+#[dev-dependencies]
+#near-sdk = "4.0.0-pre.6"
+#near-sdk-sim = "4.0.0-pre.6"
+
+[profile.release]
+codegen-units = 1
+# Tell `rustc` to optimize for small code size.
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
