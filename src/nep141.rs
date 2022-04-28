@@ -57,7 +57,7 @@ use near_contract_standards::fungible_token::FungibleToken;
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::LazyOption;
 use near_sdk::json_types::U128;
-use near_sdk::{env, log, near_bindgen, AccountId, Balance, PanicOnDefault, PromiseOrValue};
+use near_sdk::{log, near_bindgen, AccountId, Balance, PanicOnDefault, PromiseOrValue};
 
 #[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
 pub struct NEP141 {
@@ -93,7 +93,6 @@ impl NEP141 {
         total_supply: U128,
         metadata: FungibleTokenMetadata,
     ) -> Self {
-        assert!(!env::state_exists(), "Already initialized");
         metadata.assert_valid();
         let mut this = Self {
             token: FungibleToken::new(b"a".to_vec()),

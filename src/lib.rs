@@ -88,7 +88,6 @@ impl Futureland {
 
     /// Create a new project
     pub fn create_project(
-        &self,
         owner_id: AccountId,
         total_shares: U128,
         project_name: String,

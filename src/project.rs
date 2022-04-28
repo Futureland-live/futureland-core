@@ -40,7 +40,7 @@ use near_contract_standards::fungible_token::metadata::{
     FungibleTokenMetadata, FT_METADATA_SPEC,
 };
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::{env, AccountId};
+use near_sdk::{AccountId};
 use near_sdk::json_types::U128;
 use super::{nep141};
 
@@ -60,7 +60,6 @@ impl Project {
         mut project_name: String,
         project_symbol: String,
     ) -> Self {
-        assert!(!env::state_exists(), "Already initialized");
         project_name.push_str(&std::string::String::from(" share"));
         let this = Self {
             shares: nep141::NEP141::new(owner_id,
