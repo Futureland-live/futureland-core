@@ -47,9 +47,10 @@ use super::{nep141};
 
 // add the following attributes to prepare your code for serialization and invocation on the blockchain
 // More built-in Rust attributes here: https://doc.rust-lang.org/reference/attributes.html#built-in-attributes-index
-#[derive(Default, BorshDeserialize, BorshSerialize)]
+#[derive(BorshDeserialize, BorshSerialize)]
 pub struct Project {
     shares: nep141::NEP141,
+    id: u128,
 }
 
 impl Project {
@@ -59,6 +60,7 @@ impl Project {
         total_shares: U128,
         mut project_name: String,
         project_symbol: String,
+        project_id: u128
     ) -> Self {
         project_name.push_str(&std::string::String::from(" share"));
         let this = Self {
@@ -72,8 +74,9 @@ impl Project {
                                             reference: None,
                                             reference_hash: None,
                                             decimals: 24,
-                                        }
-                                    )
+                                            },
+                                        ),
+            id: project_id,
         };
 
         // TODO: transfer some shares to Futureland
