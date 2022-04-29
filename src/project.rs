@@ -43,11 +43,13 @@ use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::{AccountId};
 use near_sdk::json_types::{U128};
 use super::{nep141};
+use near_sdk::serde::{Serialize, Deserialize};
 
 
 // add the following attributes to prepare your code for serialization and invocation on the blockchain
 // More built-in Rust attributes here: https://doc.rust-lang.org/reference/attributes.html#built-in-attributes-index
-#[derive(Default, BorshDeserialize, BorshSerialize)]
+#[derive(Default, BorshDeserialize, BorshSerialize, Serialize, Deserialize)]
+#[serde(crate = "near_sdk::serde")]
 pub struct Project {
     name: String,
     description: String,

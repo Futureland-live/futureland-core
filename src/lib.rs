@@ -127,6 +127,14 @@ impl Futureland {
         self.projects.get(project_id).unwrap().get_description()
     }
 
+    /// retrive a project by its id
+    pub fn get_project(
+        &self,
+        project_id: u64,
+    ) -> project::Project {
+        self.projects.get(project_id).unwrap()
+    }
+
     // TODO: expand this with more functionality
 }
 
