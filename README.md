@@ -6,32 +6,43 @@ See [Near instructions for setting up Near's rust sdk](https://docs.near.org/doc
 
 ## Building
 To build, run
-```
+```bash
 cargo build --target wasm32-unknown-unknown --release
 ```
 
 ## Deploying and running on testnet
 To deploy to testnet, run
 
-```
+```bash
 near dev-deploy --wasmFile target/wasm32-unknown-unknown/release/futureland_core.wasm
 ```
 
 To update the `CONTRACT_NAME` environment variable, run
-```
+```bash
 source neardev/dev-account.env
 ```
 
 To call a smart contract function, run
-```
+```bash
 near call $CONTRACT_NAME  <function name> <function args> --accountId $CONTRACT_NAME
 ```
 
-For example:
+### Example Usage:
+```bash
+# deploy smart contract
+$ near dev-deploy target/wasm32-unknown-unknown/release/futureland_core.wasm
+# set up the $CONTRACT_NAME environment variable
+$ source neardev/*.env
+# initialize smart contract
+$ near call $CONTRACT_NAME  new --accountId $CONTRACT_NAME
+# create a new project (returns its id)
+$ near call $CONTRACT_NAME create_project '{"project_name": "past land", "project_description":, "the opposite of futureland"}' --accountId clarkpoon.testnet
+# get information about a project (with id 0)
+$ near call $CONTRACT_NAME get_project '{"project_id": 0}' --accountId clarkpoon.testnet
 ```
-near call $CONTRACT_NAME  create_project "{\"owner_id\": \"clarkpoon.testnet\", \"total_shares\": \"1000\", \"project_name\": \"test project\", \"project_symbol\": \"TP\"}" --accountId $CONTRACT_NAME
-```
+You can replace clarkpoon.testnet with your near account id in the example above
 
+### Common Issues
 
 If you get an error like this
 ```
