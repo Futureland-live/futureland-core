@@ -38,6 +38,7 @@
 
 mod nep141;
 mod project;
+mod listing;
 
 use near_contract_standards::fungible_token::metadata::{
     FungibleTokenMetadata, FT_METADATA_SPEC,
@@ -59,6 +60,7 @@ const INITIAL_FLC_QUANTITY: u128 = 1000000;
 pub struct Futureland {
     flc: nep141::NEP141, // TODO: add this back in later
     projects: Vector<project::Project>,
+    listings: Vector<Vector<listing::Listing>>,
     id_counter: u64,
 }
 
@@ -87,6 +89,7 @@ impl Futureland {
                                         decimals: 24,
                                     }),
             projects: Vector::new(0),
+            listings: Vector::new(0),
             id_counter:0,
         };
 
@@ -94,6 +97,7 @@ impl Futureland {
     }
 
     /// Create a new project
+    /// return the project id
     pub fn create_project(
         &mut self,
         // owner_id: AccountId,
@@ -103,6 +107,8 @@ impl Futureland {
         // project_symbol: String
     ) -> U64 {
         self.projects.push(&project::Project::new(project_name, project_description));
+
+        self.listings.push(&Vector::new(0));
 
         println!("Created project with id: {}", self.id_counter);
 
@@ -133,6 +139,39 @@ impl Futureland {
         project_id: u64,
     ) -> project::Project {
         self.projects.get(project_id).unwrap()
+    }
+
+    /// create a new listing for the given project
+    /// return the listing id
+    pub fn create_listing(
+        &mut self,
+        description: String,
+        project_id: u64,
+        price: u128,
+    ) -> u64{
+        self.listings.get(project_id).unwrap().push(&listing::Listing {
+            description: description,
+            price: price,
+        });
+
+        self.listings.len() - 1
+    }
+
+    /// get how many listings there are go a given project
+    pub fn count_listings(
+        &self,
+        project_id: u64,
+    ) -> U64 {
+        U64::from(self.listings.get(project_id).unwrap().len())
+    }
+
+    /// retrieve a given listing for the given project
+    pub fn get_listing(
+        &self,
+        project_id: u64,
+        listing_id: u64,
+    ) -> listing::Listing {
+        self.listings.get(project_id).unwrap().get(listing_id).unwrap()
     }
 
     // TODO: expand this with more functionality
