@@ -41,34 +41,38 @@ use near_contract_standards::fungible_token::metadata::{
 };
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::{AccountId};
-use near_sdk::json_types::U128;
+use near_sdk::json_types::{U128};
 use super::{nep141};
 
 
 // add the following attributes to prepare your code for serialization and invocation on the blockchain
 // More built-in Rust attributes here: https://doc.rust-lang.org/reference/attributes.html#built-in-attributes-index
-#[derive(BorshDeserialize, BorshSerialize)]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
 pub struct Project {
-    shares: nep141::NEP141,
-    id: u128,
+    name: String,
+    description: String,
+    // shares: nep141::NEP141,  // TODO: add this back later
 }
 
 impl Project {
     /// Creates a new project in the Futureland ecosystem
     pub fn new(
-        owner_id: AccountId,
-        total_shares: U128,
-        mut project_name: String,
-        project_symbol: String,
-        project_id: u128
+        //owner_id: AccountId,
+        //total_shares: U128,
+        project_name: String,
+        project_description: String,
+        //project_symbol: String,
     ) -> Self {
-        project_name.push_str(&std::string::String::from(" share"));
+        //project_name.push_str(&std::string::String::from(" share"));
         let this = Self {
+            name: project_name.clone(),
+            description: project_description,
+            /*
             shares: nep141::NEP141::new(owner_id,
                                         total_shares,
                                         FungibleTokenMetadata {
                                             spec: FT_METADATA_SPEC.to_string(),
-                                            name: project_name,
+                                            name: project_name.clone(),
                                             symbol: project_symbol,
                                             icon: None,
                                             reference: None,
@@ -76,12 +80,20 @@ impl Project {
                                             decimals: 24,
                                             },
                                         ),
-            id: project_id,
+            */
         };
 
         // TODO: transfer some shares to Futureland
 
         this
+    }
+
+    pub fn get_name(&self) -> String {
+        self.name.clone()
+    }
+
+    pub fn get_description(&self) -> String {
+        self.description.clone()
     }
 
     // TODO: extend this with more project functionality
