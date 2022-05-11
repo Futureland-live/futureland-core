@@ -36,7 +36,7 @@ $ source neardev/*.env
 # initialize smart contract
 $ near call $CONTRACT_NAME  new --accountId $CONTRACT_NAME
 # create a new project (returns its id)
-$ near call $CONTRACT_NAME create_project '{"project_name": "past land", "project_description":, "the opposite of futureland"}' --accountId clarkpoon.testnet
+$ near call $CONTRACT_NAME create_project '{"project_name": "past land", "project_description": "the opposite of futureland"}' --accountId clarkpoon.testnet
 # get information about a project (with id 0)
 $ near call $CONTRACT_NAME get_project '{"project_id": 0}' --accountId clarkpoon.testnet
 ```
