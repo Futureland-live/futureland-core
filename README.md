@@ -1,3 +1,5 @@
+![FL-on-N](http://futureland.live/wp-content/uploads/2022/05/NEAR-futureland.png)
+
 # Futureland Core
 This repo contains the code for the smart contract that implements Futureland's core functionality.
 
