@@ -1,13 +1,13 @@
 /*!
- * Copied from https://github.com/near-examples/FT/blob/750964610906ba10e2362afa23ef98f07d77cd50/ft/src/lib.rs
- * 
- * Will be modified for our use case
+ * Reference: https://github.com/near-examples/FT/blob/750964610906ba10e2362afa23ef98f07d77cd50/ft/src/lib.rs
+ *
+ * Will be modified for Futureland case
  */
 
 /*!
  * Original License:
  * Copyright 2020 NEAR Inc
- * 
+ *
  * Permission is hereby granted, free of charge, to any
  * person obtaining a copy of this software and associated
  * documentation files (the "Software"), to deal in the
@@ -17,11 +17,11 @@
  * the Software, and to permit persons to whom the Software
  * is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice
  * shall be included in all copies or substantial portions
  * of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
  * ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
  * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A

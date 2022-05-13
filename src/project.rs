@@ -8,9 +8,9 @@
 
 /*!
  * Original License:
- * 
+ *
  * Copyright 2020 NEAR Inc
- * 
+ *
  * Permission is hereby granted, free of charge, to any
  * person obtaining a copy of this software and associated
  * documentation files (the "Software"), to deal in the
@@ -20,11 +20,11 @@
  * the Software, and to permit persons to whom the Software
  * is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice
  * shall be included in all copies or substantial portions
  * of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
  * ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
  * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
@@ -36,6 +36,8 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
+// These statements bring libraries to implement FT Fungible Token technology
+// as well as metadata and data engineering tools
 use near_contract_standards::fungible_token::metadata::{
     FungibleTokenMetadata, FT_METADATA_SPEC,
 };
@@ -58,6 +60,17 @@ pub struct Project {
 
 impl Project {
     /// Creates a new project in the Futureland ecosystem
+    /// Projects will describe endeavors on the future of cities
+    /// The most important features to be implemented in a Futureland project are:
+    /// [1] Version ID (year): when is the project planned to happened i.e. 2035
+    /// [2] Version Token (documents): unique encrypted key containing
+    /// information of uploaded documents that validated a version of the future
+    /// [3] Description: project vision, inspiration, etc.
+    /// [4] Visionary: who started
+    /// [5] Contributors: a series of futureland accounts
+    /// TODO: this list of attriutes are non exhaustive, it can change in future versions
+
+    /// FUNCTION: Create New Project
     pub fn new(
         //owner_id: AccountId,
         //total_shares: U128,
@@ -85,7 +98,25 @@ impl Project {
             */
         };
 
-        // TODO: transfer some shares to Futureland
+        /// TODO: FUNCTION: Equalize Shares
+        // Calculate contribution effort, distribute shares accordingly
+        // Return: list of IDs and shares
+
+        /// TODO: FUNCTION: Upload Work
+        // Ask for a job upload - get project status
+        // Return: True - good to go; else RaiseError - i.e. waiting merge
+
+        /// TODO: FUNCTION: Get New Files Information
+        // Ask for latests files uploaded
+        // Return: List of transactions; else RaiseError
+
+        /// TODO: FUNCTION: Stake
+        // Ask for amount in stake
+        // Return: Amount stake per crypto and their APRs; else RaiseError
+
+        /// TODO: FUNCTION: Update Project Information
+        // Send data to the core project branch
+        // Return: True - ok; else RaiseError
 
         this
     }
@@ -98,7 +129,7 @@ impl Project {
         self.description.clone()
     }
 
-    // TODO: extend this with more project functionality
+    /// TODO: extend this with more project functionality
 }
 
-// TODO: set up tests
+/// TODO: set up tests

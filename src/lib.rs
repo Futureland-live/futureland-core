@@ -3,14 +3,14 @@
  */
 
 /*!
- * Copied from Near's setup example project here: https://docs.near.org/docs/develop/contracts/rust/intro
+ * Reference: Near's setup example project here: https://docs.near.org/docs/develop/contracts/rust/intro
  */
 
 /*!
  * Original License:
- * 
+ *
  * Copyright 2020 NEAR Inc
- * 
+ *
  * Permission is hereby granted, free of charge, to any
  * person obtaining a copy of this software and associated
  * documentation files (the "Software"), to deal in the
@@ -20,11 +20,11 @@
  * the Software, and to permit persons to whom the Software
  * is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice
  * shall be included in all copies or substantial portions
  * of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
  * ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
  * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
@@ -111,7 +111,7 @@ impl Futureland {
         U64::from(self.id_counter - 1)
     }
 
-    /// retrive a project name by its id
+    /// retrieve a project name by its id
     pub fn get_project_name(
         &self,
         project_id: u64,
@@ -135,7 +135,15 @@ impl Futureland {
         self.projects.get(project_id).unwrap()
     }
 
-    // TODO: expand this with more functionality
+    /// TODO: expand this with more functionality
+
+    /// TODO: Connect APIs with core Project functions, here they are:
+    /// Equalize Shares
+    /// Upload Work
+    /// Get New Files Information
+    /// Stake
+    ///Update Project Information
+
 }
 
 // TODO: set up tests
