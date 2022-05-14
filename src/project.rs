@@ -118,6 +118,14 @@ impl Project {
         // Send data to the core project branch
         // Return: True - ok; else RaiseError
 
+        /// TODO: FUNCTION: Get Contributors
+        // Ask for current creators engaged in the project
+        // Return: List of creators ID; else RaiseError
+
+        /// TODO: FUNCTION: Get Investors
+        // Ask for current investors engaged in the project
+        // Return: List of investors ID; else RaiseError
+
         this
     }
 

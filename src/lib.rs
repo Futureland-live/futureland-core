@@ -142,7 +142,9 @@ impl Futureland {
     /// Upload Work
     /// Get New Files Information
     /// Stake
-    ///Update Project Information
+    /// Update Project Information
+    /// Get Contributors
+    /// Get Investors
 
 }
 
